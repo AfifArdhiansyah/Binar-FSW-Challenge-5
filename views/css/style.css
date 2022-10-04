@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#cars-page{
+    height: 100vh;
+}
+
+#side-bar{
+    background-color: #0D28A6;
+    color: white;
+    padding-top: 20px;
+}
+
+#cars{
+    height: 100%;
+}
+
+
+#top-nav{
+    height: 10%;
+    background-color: white;
+}
+
+#side-nav{
+    height: 90%;
+}
+
+#side-nav .col:first-child{
+    padding: 0;
+    width: 10px;
+}
+
+#side-nav .col-2{
+    padding: 0;
+}
+
+.list-group-item{
+    border: none;
+}
+
+.list-group{
+    border-radius: 0;
+}
+
+.list-group a{
+    color: #8A8A8A;
+}
+
+.list-group .active{
+    background-color: #CFD4ED;
+    color: black;
+}
+
+#content{
+    background-color: #F4F5F7;
+}
