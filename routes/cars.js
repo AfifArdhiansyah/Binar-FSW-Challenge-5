@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
     res.json(cars);
 });
 
+//GET ONE
+router.get('/:id', async (req, res) => {
+    const car = await Cars.findByPk(req.params.id);
+    res.json(car);
+});
+
 //POST
 router.post('/', async (req, res) => {
     const schema = {
