@@ -31,6 +31,23 @@ router.post('/', async (req, res) => {
     }
 });
 
+//PUT
+router.put('/:id', async (req, res) => {
+    const schema = {
+        name: {type: "string", min: 3, max: 50},
+        year: {type: "number", positive: true, integer: true, min: 1886, max: 2022}
+    };
+    const validate = v.compile(schema);
+    const valid = validate(req.body);
+    if (valid === true) {
+        const car = await Cars.update(req.body, {where: {id: req.params.id}});
+        res.json(car);
+    } else {
+        res.status(400).json({error: valid});
+    }
+});
+
+
 
 
 module.exports = router;
