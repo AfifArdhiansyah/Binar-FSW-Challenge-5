@@ -3,8 +3,10 @@ const {Cars} = require('../models');
 const Validator = require('fastest-validator');
 const v = new Validator();
 
-router.get('/', (req, res) => {
-    res.send('Welcome to the Cars API!');
+//GET ALL
+router.get('/', async (req, res) => {
+    const cars = await Cars.findAll();
+    res.json(cars);
 });
 
 //POST
@@ -22,5 +24,7 @@ router.post('/', async (req, res) => {
         res.status(400).json({error: valid});
     }
 });
+
+
 
 module.exports = router;
