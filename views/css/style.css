@@ -56,3 +56,19 @@
 #content{
     background-color: #F4F5F7;
 }
+
+#top-ref{
+    gap: 10px;
+}
+
+#top-ref a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#top-ref .active{
+    text-decoration: none;
+    color: #222222;
+    font-weight: normal;
+}

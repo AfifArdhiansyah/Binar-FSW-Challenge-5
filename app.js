@@ -23,7 +23,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "views")));
 
 app.use("/", indexRouter);
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/cars", carsRouter);
-// app.use("/notes", notesRouter);
 
 module.exports = app;

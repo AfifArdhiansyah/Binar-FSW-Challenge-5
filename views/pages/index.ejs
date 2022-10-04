@@ -47,18 +47,18 @@
                 <div id="side-nav" class="row">            
                     <div class="col-2">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="home">CARS</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="profile">List Cars</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="home">CARS</a>
+                            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="profile">List Cars</a>
                         </div>
                     </div>
                     <!-- content -->
                     <div id="content" class="col-10" >
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                                 <h1>CARS</h1>
                             </div>
-                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                                <h1>List Cars</h1>
+                            <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                                <%- include('../partials/car_list'); %>
                             </div>
                         </div>
                     </div>
