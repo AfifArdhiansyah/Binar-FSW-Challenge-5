@@ -1,14 +1,19 @@
 // require("dotenv").config();
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+const FileUpload = require("express-fileupload");
 
-var indexRouter = require("./routes/index");
-var carsRouter = require("./routes/cars");
-// var notesRouter = require("./routes/notes");
+const indexRouter = require("./routes/index");
+const carsRouter = require("./routes/cars");
+// const notesRouter = require("./routes/notes");
 
-var app = express();
+const app = express();
+
+app.use(cors());
+app.use(FileUpload());
 
 app.use(logger("dev"));
 app.use(express.json());

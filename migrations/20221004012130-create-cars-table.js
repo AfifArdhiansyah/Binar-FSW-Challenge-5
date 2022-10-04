@@ -7,6 +7,7 @@ module.exports = {
        id: {type: Sequelize.INTEGER , primaryKey: true, autoIncrement: true},
        name: {type: Sequelize.STRING , allowNull: false},
        year: {type: Sequelize.INTEGER , allowNull: false},
+       img: {type: Sequelize.STRING , allowNull: false},
        createdAt: {type: Sequelize.DATE , allowNull: false},
        updatedAt: {type: Sequelize.DATE , allowNull: false}
       });
