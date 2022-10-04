@@ -47,7 +47,11 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-
+//DELETE
+router.delete('/:id', async (req, res) => {
+    const car = await Cars.destroy({where: {id: req.params.id}});
+    res.json(car);
+});
 
 
 module.exports = router;
