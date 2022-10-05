@@ -1,4 +1,3 @@
-// require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -8,7 +7,6 @@ const FileUpload = require("express-fileupload");
 
 const indexRouter = require("./routes/index");
 const carsRouter = require("./routes/cars");
-// const notesRouter = require("./routes/notes");
 
 const app = express();
 
@@ -21,7 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "views")));
-
 app.use("/", indexRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
