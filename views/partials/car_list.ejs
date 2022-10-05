@@ -4,12 +4,26 @@
     <a class="active" href="">List Car</a>
 </div>
 
-<div class="ms-3 d-flex justify-content-between">
+<div class="ms-3 mb-3 d-flex justify-content-between">
     <h1>List Car</h1>
-    <a href="/cars/add" class="btn btn-primary btn-add d-flex align-items-center">
+    <a href="/add" class="btn btn-primary btn-add d-flex align-items-center">
         <img class="icon" src="../assets/fi_plus.png" alt="">
         Add New Car
     </a>
+</div>
+
+<div class="ms-3">
+  <input type="radio" class="btn-check" name="options-outlined" id="radio-all" autocomplete="off" checked>
+  <label class="btn btn-outline-radio" for="radio-all">All</label>
+  
+  <input type="radio" class="btn-check" name="options-outlined" id="radio-small" autocomplete="off">
+  <label class="btn btn-outline-radio" for="radio-small">Small</label>
+
+  <input type="radio" class="btn-check" name="options-outlined" id="radio-medium" autocomplete="off">
+  <label class="btn btn-outline-radio" for="radio-medium">Medium</label>
+
+  <input type="radio" class="btn-check" name="options-outlined" id="radio-large" autocomplete="off">
+  <label class="btn btn-outline-radio" for="radio-large">Large</label>
 </div>
 
 <div id="cars-card" class="row row-cols-1 row-cols-md-3 g-4 m-2">
@@ -29,7 +43,7 @@
                 <img class="icon" src="../assets/fi_trash.png" alt="">
                 Delete
             </a>
-            <a href="#" class="btn m-1 btn-success d-flex align-items-center justify-content-center btn-edit">
+            <a href="/update" class="btn m-1 btn-success d-flex align-items-center justify-content-center btn-edit">
                 <img class="icon" src="../assets/fi_edit.png" alt="">
                 Edit
             </a>
@@ -52,7 +66,7 @@
                 <img class="icon" src="../assets/fi_trash.png" alt="">
                 Delete
             </a>
-            <a href="#" class="btn m-1 btn-success d-flex align-items-center justify-content-center btn-edit">
+            <a href="/update" class="btn m-1 btn-success d-flex align-items-center justify-content-center btn-edit">
                 <img class="icon" src="../assets/fi_edit.png" alt="">
                 Edit
             </a>

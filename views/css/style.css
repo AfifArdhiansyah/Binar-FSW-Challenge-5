@@ -119,3 +119,38 @@
     height: fit-content;
     background-color: #0D28A6;
 }
+
+form{
+    background-color: white;
+}
+
+.input-label{
+    width: 20%;
+}
+
+.input-field{
+    width: 50%;
+}
+
+.form-select{
+    display: block;
+}
+
+.btn-cancel{
+    border-color: #0D28A6;
+}
+
+.btn-save{
+    background-color: #0D28A6;
+    color: white;
+    border: none;
+}
+
+.btn-outline-radio{
+    border-color: #0D28A6;
+}
+
+.btn-check:checked+.btn-outline-radio{
+    background-color: #0D28A6;
+    color: white;
+}
