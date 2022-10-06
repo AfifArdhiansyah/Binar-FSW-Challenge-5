@@ -4,10 +4,11 @@ const Validator = require('fastest-validator');
 const v = new Validator();
 const path = require('path');
 const fs = require('fs');
+const config = require('../config/config');
 
 //GET ALL
 router.get('/', async (req, res) => {
-    const cars = await Cars.findAll();
+    const cars = await Cars.findAll({order: [['name', 'ASC']]});
     res.json(cars);
 });
 
@@ -21,7 +22,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     if(req.files === null) return res.status(400).json({msg: "No File Uploaded"});
     const name = req.body.name;
-    const year = parseInt(req.body.year);
+    const rent = parseInt(req.body.rent);
+    const size = req.body.size;
     const file = req.files.img;
     const fileSize = file.size
     const ext = path.extname(file.name);
@@ -31,20 +33,21 @@ router.post('/', async (req, res) => {
 
     const schema = {
         name: {type: "string", min: 3, max: 50},
-        year: {type: "number", positive: true, integer: true, min: 1886, max: 2022},
+        rent: {type: "number", positive: true, integer: true, min: 1886, max: 2022},
+        size: {type: "string", min: 3, max: 50},
         img: {type: "string", min: 3, max: 255}
     };
     const validate = v.compile(schema);
-    const valid = validate({name: name, year: year, img: url});
+    const valid = validate({name: name, rent: rent, size: size, img: url});
 
     if(valid){
         if(!allowedType.includes(ext.toLowerCase())) return res.status(422).json({msg: "Invalid Images"});
-        if(fileSize > 5000000) return res.status(422).json({msg: "Image must be less than 5 MB"});
+        if(fileSize > 2000000) return res.status(422).json({msg: "Image must be less than 2 MB"});
 
         file.mv(`./public/images/${fileName}`, async(err)=>{
             if(err) return res.status(500).json({msg: err.message});
             try {
-                await Cars.create({name: name, year: year, img: url});
+                await Cars.create({name: name, rent: rent, size: size, img: url});
                 res.status(201).json({msg: "Cars Created Successfuly"});
             } catch (error) {
                 console.log(error.message);
@@ -66,7 +69,8 @@ router.put('/:id', async (req, res) => {
 
     let url;
     let name;
-    let year;
+    let rent;
+    let size;
     let fileName;
     let ext = '';
     let fileSize;
@@ -85,15 +89,17 @@ router.put('/:id', async (req, res) => {
     }
 
     (req.body.name) ? name = req.body.name : name = car.name;
-    (req.body.year) ? year = parseInt(req.body.year) : year = car.year;
+    (req.body.rent) ? rent = parseInt(req.body.rent) : rent = car.rent;
+    (req.body.size) ? size = req.body.size : size = car.size;
         
     const schema = {
         name: {type: "string", min: 3, max: 50},
         year: {type: "number", positive: true, integer: true, min: 1886, max: 2022},
+        size: {type: "string", min: 3, max: 50},
         img: {type: "string", min: 3, max: 255}
     };
     const validate = v.compile(schema);
-    const valid = validate({name: name, year: year, img: url});
+    const valid = validate({name: name, rent: rent, size: size, img: url});
 
     if(valid){
         if(req.files){
@@ -103,7 +109,7 @@ router.put('/:id', async (req, res) => {
             file.mv(`./public/images/${fileName}`, async(err)=>{
                 if(err) return res.status(500).json({msg: err.message});
                 try {
-                    await Cars.update({name: name, year: year, img: url}, {where: {id: req.params.id}});
+                    await Cars.update({name: name, rent: rent, size: size, img: url}, {where: {id: req.params.id}});
                     res.status(201).json({msg: "Cars Updated Successfuly"});
                 } catch (error) {
                     console.log(error.message);
@@ -112,7 +118,7 @@ router.put('/:id', async (req, res) => {
         }
         else{
             try {
-                await Cars.update({name: name, year: year, img: url}, {where: {id: req.params.id}});
+                await Cars.update({name: name, rent: rent, size: size, img: url}, {where: {id: req.params.id}});
                 res.status(201).json({msg: "Cars Updated Successfuly"});
             } catch (error) {
                 console.log(error.message);
