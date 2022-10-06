@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const {Cars} = require('../models');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('pages/index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+    const cars = await Cars.findAll({order: [['name', 'ASC']]});
+    console.log('this is cars', cars);
+    res.render('pages/index', { cars: cars});
 });
 
 /* GET add page. */
