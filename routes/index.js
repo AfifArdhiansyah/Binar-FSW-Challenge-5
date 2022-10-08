@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {Cars} = require('../models');
+const sequelize = require('sequelize');
+// const Op = Sequelize.Op;
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -13,6 +15,16 @@ router.get('/saved', async function(req, res, next) {
     const cars = await Cars.findAll({order: [['name', 'ASC']]});
     res.render('pages/index', { cars: cars, filter: "all", save:"success"});
 });
+
+/* GET home page. search name */
+router.post('/find', async function(req, res, next) {
+    console.log(req.body);
+    const search = req.body.name.toLowerCase();
+    const cars = await Cars.findAll({order: [['name', 'ASC']], where: {name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + search + '%')}});
+    // res.render('pages/index', { cars: cars, filter: "all", save:""});
+    res.render('pages/index', { cars: cars, filter: "all", save:""});
+});
+
 
 //filter
 /* GET Small */
