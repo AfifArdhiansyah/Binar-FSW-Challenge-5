@@ -1,4 +1,4 @@
-# Car-Management-Api
+# Car Management Api
 
 Challenge Chapter 5 Full Stack Web Binar Academy 
 
@@ -50,6 +50,9 @@ Untuk menghapus data mobil dapat dilakukan request berdarakan id sebagai berikut
 <img width="641" alt="image" src="https://user-images.githubusercontent.com/87472849/194707263-f1142cf9-4e64-46b6-9857-691efc9466d0.png">
 
 ## Entity Relationship Diagram
+Data pada aplikasi ini disimpan dalam tabel bernama `cars`. Atribut dari tabel ini terdapat primary key dengan auto fill yaitu `id` dengan tipe data integer, dan atribut lainnya yaitu `name` tipe data varchar(255), `rent` tipe data integer, `size` tipe data varchar(255), `createdAt` dan `updatedAt` dengan tipe data DateTime. Berikut merupakan diagram tabel cars:
+</br></br>
+<img width="222" alt="image" src="https://user-images.githubusercontent.com/87472849/194707759-d67ee507-a3ed-43c2-a1a6-359f7221867d.png">
 
 
 
