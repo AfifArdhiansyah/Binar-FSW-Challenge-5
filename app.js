@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, "views")));
 app.use("/", indexRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/cars", carsRouter);
+app.use("/", carsRouter);
 
 module.exports = app;

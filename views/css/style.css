@@ -145,11 +145,26 @@ form{
     border: none;
 }
 
+.btn-close-modal{
+    border-color: #0D28A6;
+    color: #0D28A6;
+}
+
 .btn-outline-radio{
     border-color: #0D28A6;
 }
 
-.btn-check:checked+.btn-outline-radio{
+.chose{
     background-color: #0D28A6;
     color: white;
+}
+
+.alert{
+    background-color: #73CA5C;
+    color: white;
+    position: absolute;
+    top: 15%;
+    width: 40vw;
+    left: 60%;
+    transform: translate(-50%, 0);
 }
