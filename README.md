@@ -23,3 +23,36 @@ Untuk menampilkan halaman Tambah Mobil Baru dapat menekan tombol "Add New Car" p
 Untuk menampilkan halaman Tambah Edit Mobil dapat menekan tombol "Edit" di halaman awal pada mobil yang ingin di-edit, atau dapat menuju url `http://localhost:8000/update/:id`
 </br></br>
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/87472849/194706747-322904f5-ac1e-4bee-ab1b-2c1b59bb58ee.png">
+
+### API Get All Cars
+Untuk mendapatkan semua data mobil dapat dilakukan request `http://localhost:8000/api/` dengan method `GET`
+</br></br>
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/87472849/194706995-2309225a-db66-488b-b8fb-788791f0b63b.png">
+
+### API Get Car By Id
+Untuk mendapatkan data mobil berdasarkan id-nya dapat dilakukan request `http://localhost:8000/api/:id` dengan method `GET`
+</br></br>
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/87472849/194707065-b5435589-4ce5-4210-bac2-9a234eb5d3d5.png">
+
+### API Post New Car
+Untuk menambahkan data baru dapat dilakukan request `http://localhost:8000/api/` dengan method `POST`
+</br></br>
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/87472849/194707128-a9c183db-fd82-4acb-9fe8-808054e21b3e.png">
+
+### API Update Car
+Untuk meng-update data mobil dilakukan request berdasarkan id sebagai berikut `http://localhost:8000/api/:id` dengan method `PUT`
+</br></br>
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/87472849/194707214-d055f4fa-e007-403e-8d2f-01209f93e4f6.png">
+
+### API Delete Car
+Untuk menghapus data mobil dapat dilakukan request berdarakan id sebagai berikut `http://localhost:8000/api/:id` dengan method `DELETE`
+</br></br>
+<img width="641" alt="image" src="https://user-images.githubusercontent.com/87472849/194707263-f1142cf9-4e64-46b6-9857-691efc9466d0.png">
+
+## Entity Relationship Diagram
+
+
+
+
+
+
