@@ -18,10 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.set('view engine', 'ejs');
+
+//by view
 app.use(express.static(path.join(__dirname, "views")));
 app.use("/", indexRouter);
 
+//by api
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", carsRouter);
+app.use("/api", carsRouter);
 
 module.exports = app;

@@ -14,15 +14,15 @@ router.get('/', async (req, res) => {
 
 //GET ONE
 router.get('/:id', async (req, res) => {
-    if(typeof req.params.id === 'number'){
-        const car = await Cars.findByPk(req.params.id);
+    if(req.params.id){
+        const id = parseInt(req.params.id);
+        const car = await Cars.findByPk(id);
         res.json(car);
     }
 });
 
 //POST
 router.post('/', async (req, res) => {
-    console.log(req);
     if(!req.files) return res.status(400).json({msg: "No File Uploaded"});
     const name = req.body.name;
     const rent = parseInt(req.body.rent);
@@ -65,7 +65,6 @@ router.post('/', async (req, res) => {
 
 //POST by view
 router.post('/postCar', async (req, res) => {
-    console.log(req);
     if(!req.files) return res.status(400).json({msg: "No File Uploaded"});
     const name = req.body.name;
     const rent = parseInt(req.body.rent);
@@ -95,8 +94,6 @@ router.post('/postCar', async (req, res) => {
             try {
                 await Cars.create({name: name, rent: rent, size: size, img: url});
                 res.redirect('/saved')
-                // const cars = await Cars.findAll({order: [['name', 'ASC']]});
-                // return res.render('pages/index', { cars: cars, filter: "all", save: 'success' });
             } catch (error) {
                 console.log(error.message);
             }

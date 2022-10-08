@@ -10,7 +10,7 @@
     <h1>Update Car Information</h1>
 </div>
 
-<form action="/updateCar/<%- Cars.dataValues.id -%>" method="POST" enctype="multipart/form-data" class="p-3 my-3">
+<form action="/api/updateCar/<%- Cars.dataValues.id -%>" method="POST" enctype="multipart/form-data" class="p-3 my-3">
     <div class="d-flex align-items-center my-3">
         <span class="input-label ms-3" id="inputGroup-sizing-default">Nama</span>
         <input name="name" type="text" class="form-control input-field" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Avanza" required value="<%- Cars.dataValues.name -%>">
