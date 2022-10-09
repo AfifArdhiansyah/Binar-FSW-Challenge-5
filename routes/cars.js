@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
     const file = req.files.img;
     const fileSize = file.size
     const ext = path.extname(file.name);
-    const fileName = file.md5 + ext;
+    const fileName = file.md5 + makeRandom(5)+ ext;
     const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     const allowedType = ['.png','.jpg','.jpeg'];
 
@@ -72,7 +72,8 @@ router.post('/postCar', async (req, res) => {
     const file = req.files.img;
     const fileSize = file.size
     const ext = path.extname(file.name);
-    const fileName = file.md5 + ext;
+    const fileName = file.md5 + makeRandom(5)+ ext;
+    // console.log(fileName);
     const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     const allowedType = ['.png','.jpg','.jpeg'];
 
@@ -126,7 +127,7 @@ router.put('/:id', async (req, res) => {
         file = req.files.img;
         fileSize = file.size
         ext = path.extname(file.name);
-        fileName = file.md5 + ext;
+        fileName = file.md5 + makeRandom(5)+ ext;
         url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     }
     else{
@@ -156,6 +157,10 @@ router.put('/:id', async (req, res) => {
                 try {
                     await Cars.update({name: name, rent: rent, size: size, img: url}, {where: {id: req.params.id}});
                     res.status(201).json({msg: "Cars Updated Successfuly"});
+                    //delete img before
+                    const nameBefore = car.img.split("/").pop();
+                    const filepath = `./public/images/${nameBefore}`;
+                    fs.unlinkSync(filepath);
                 } catch (error) {
                     console.log(error.message);
                 }
@@ -196,11 +201,12 @@ router.post('/updateCar/:id', async (req, res) => {
         file = req.files.img;
         fileSize = file.size
         ext = path.extname(file.name);
-        fileName = file.md5 + ext;
+        fileName = file.md5 + makeRandom(5) + ext;
         url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
+        // console.log(url)
     }
     else{
-        url = car.img;
+        url = car.img;       
     }
 
     (req.body.name) ? name = req.body.name : name = car.name;
@@ -225,7 +231,12 @@ router.post('/updateCar/:id', async (req, res) => {
                 if(err) return res.status(500).json({msg: err.message});
                 try {
                     await Cars.update({name: name, rent: rent, size: size, img: url}, {where: {id: req.params.id}});
-                    res.redirect('/saved');
+                    console.log(url, `./public/images/${fileName}`)
+                    //delete img before
+                    const nameBefore = car.img.split("/").pop();
+                    const filepath = `./public/images/${nameBefore}`;
+                    fs.unlinkSync(filepath);       
+                    res.redirect('/saved');           
                 } catch (error) {
                     console.log(error.message);
                 }
@@ -255,15 +266,27 @@ router.delete('/:id', async (req, res) => {
     res.json(msg);
 });
 
-//DELETE
+//DELETE by View
 router.get('/deleteCar/:id', async (req, res) => {
     const car = await Cars.findByPk(req.params.id);
     const fileName = car.img.split("/").pop();
     const filepath = `./public/images/${fileName}`;
-    // fs.unlinkSync(filepath);
+    fs.unlinkSync(filepath);
     const msg = await Cars.destroy({where: {id: req.params.id}});
     res.redirect("/");
 });
+
+//random string
+function makeRandom(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
 
 
 module.exports = router;
